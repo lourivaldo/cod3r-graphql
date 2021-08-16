@@ -24,6 +24,7 @@ const typeDefs = gql`
         date: Date
         loggedUser: User
         mainProduct: Product
+        lotteryNumbers: [Int!]!
     }
 `
 
@@ -62,6 +63,13 @@ const resolvers = {
                 price: 12000,
                 discount: 0.1,
             }
+        },
+        lotteryNumbers() {
+            const ascSort = (a, b) => a - b
+            return Array(6)
+                .fill(0)
+                .map(() => parseInt(Math.random() * 60 + 1))
+                .sort(ascSort)
         }
     }
 }

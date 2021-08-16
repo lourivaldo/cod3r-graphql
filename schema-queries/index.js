@@ -20,6 +20,11 @@ const typeDefs = gql`
 `
 
 const resolvers = {
+    User: {
+      salary(user) {
+          return user.salary_brute
+      },
+    },
     Query: {
         hello() {
             return 'Hello world'
@@ -33,7 +38,7 @@ const resolvers = {
                 name: 'Lourivaldo',
                 email: 'lourivaldovasconcelos@gamil.com',
                 age: 20,
-                salary: 1234.56,
+                salary_brute: 1234.56,
                 vip: true
             }
         }

@@ -3,9 +3,19 @@ const { ApolloServer, gql } = require('apollo-server')
 const typeDefs = gql`
     scalar Date
     
+    type User {
+        id: ID!
+        name: String!
+        email: String!
+        age: Int
+        salary: Float
+        vip: Boolean
+    }
+    
     type Query {
         hello: String
         date: Date
+        loggedUser: User
     }
 `
 
@@ -16,6 +26,16 @@ const resolvers = {
         },
         date() {
             return new Date()
+        },
+        loggedUser() {
+            return {
+                id: 1,
+                name: 'Lourivaldo',
+                email: 'lourivaldovasconcelos@gamil.com',
+                age: 20,
+                salary: 1234.56,
+                vip: true
+            }
         }
     }
 }

@@ -1,9 +1,11 @@
 const { ApolloServer, gql } = require('apollo-server')
 
 const typeDefs = gql`
+    scalar Date
+    
     type Query {
         hello: String
-        date: String
+        date: Date
     }
 `
 
@@ -13,7 +15,7 @@ const resolvers = {
             return 'Hello world'
         },
         date() {
-            return (new Date()).toDateString()
+            return new Date()
         }
     }
 }

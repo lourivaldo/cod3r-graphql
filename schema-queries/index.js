@@ -1,5 +1,16 @@
 const { ApolloServer, gql } = require('apollo-server')
 
+const roles = [
+    {
+        id: 1,
+        name: 'Comum',
+    },
+    {
+        id: 2,
+        name: 'Administrador',
+    }
+]
+
 const users = [
     {
         id: 1,
@@ -23,6 +34,11 @@ const users = [
 
 const typeDefs = gql`
     scalar Date
+
+    type Role {
+        id: Int!
+        name: String!
+    }
     
     type User {
         id: Int!
@@ -48,6 +64,8 @@ const typeDefs = gql`
         lotteryNumbers: [Int!]!
         users: [User]
         user(id: Int): User
+        roles: [Role]
+        role(id: Int): Role
     }
 `
 
@@ -99,6 +117,12 @@ const resolvers = {
         },
         user(_, { id }) {
             return users.find(user => user.id === id);
+        },
+        roles() {
+            return roles;
+        },
+        role(_, { id }) {
+            return roles.find(role => role.id === id);
         },
     }
 }

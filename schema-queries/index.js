@@ -25,7 +25,7 @@ const typeDefs = gql`
     scalar Date
     
     type User {
-        id: ID!
+        id: Int!
         name: String!
         email: String!
         age: Int
@@ -47,6 +47,7 @@ const typeDefs = gql`
         mainProduct: Product
         lotteryNumbers: [Int!]!
         users: [User]
+        user(id: Int): User
     }
 `
 
@@ -95,6 +96,9 @@ const resolvers = {
         },
         users() {
             return users;
+        },
+        user(_, { id }) {
+            return users.find(user => user.id === id);
         },
     }
 }

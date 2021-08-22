@@ -17,18 +17,21 @@ const users = [
         name: 'Lourivaldo',
         email: 'lourivaldo@gmail.com',
         age: 30,
+        role_id: 1,
     },
     {
         id: 2,
         name: 'Rafael',
         email: 'rafael@gmail.com',
         age: 31,
+        role_id: 2,
     },
     {
         id: 3,
         name: 'Daniela',
         email: 'daniela@gmail.com',
         age: 24,
+        role_id: 2,
     },
 ]
 
@@ -47,6 +50,7 @@ const typeDefs = gql`
         age: Int
         salary: Float
         vip: Boolean
+        role: Role
     }
 
     type Product {
@@ -73,6 +77,9 @@ const resolvers = {
     User: {
       salary(user) {
           return user.salary_brute
+      },
+      role(user) {
+          return roles.find(role => role.id === user.role_id);
       },
     },
     Product: {

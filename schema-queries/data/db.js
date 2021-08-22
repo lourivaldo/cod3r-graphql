@@ -16,6 +16,7 @@ const users = [
         email: 'lourivaldo@gmail.com',
         age: 30,
         role_id: 1,
+        status: 'ACTIVE',
     },
     {
         id: 2,
@@ -23,6 +24,7 @@ const users = [
         email: 'rafael@gmail.com',
         age: 31,
         role_id: 2,
+        status: 'INACTIVE',
     },
     {
         id: 3,
@@ -30,6 +32,7 @@ const users = [
         email: 'daniela@gmail.com',
         age: 24,
         role_id: 2,
+        status: 'BLOCKED',
     },
 ]
 

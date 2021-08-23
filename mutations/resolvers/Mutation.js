@@ -1,7 +1,18 @@
 const { users, nextId } = require('../data/db')
 
+function userIndex(filter) {
+    if (!filter) return -1
+    const { id, email } = filter
+    if (id) {
+        return users.findIndex(u => u.id === id)
+    } else if (id) {
+        return users.findIndex(u => u.email === email)
+    }
+    return -1
+}
+
 module.exports = {
-    createUser(_, { name, email, age }) {
+    createUser(_, { data: { name, email, age } }) {
         const emailExists = users.some(u => u.email === email)
         if (emailExists) {
             throw new Error('email exists')
@@ -17,8 +28,8 @@ module.exports = {
         users.push(user)
         return user
     },
-    removeUser(_, { id }) {
-        const index = users.findIndex(u => u.id === id)
+    removeUser(_, { filter }) {
+        const index = userIndex(filter)
         if (index < 0) return null
         const removedUsers = users.splice(index, 1)
         return removedUsers ? removedUsers[0] : null

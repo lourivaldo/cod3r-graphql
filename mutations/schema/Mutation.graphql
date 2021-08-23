@@ -4,9 +4,7 @@ type Mutation {
     ): User!
     removeUser(filter: UserFilter!): User
     updateUser(
-        id: Int!
-        name: String
-        email: String
-        age: Int
+        filter: UserFilter!
+        data: UserInput!
     ): User
 }

@@ -34,14 +34,12 @@ module.exports = {
         const removedUsers = users.splice(index, 1)
         return removedUsers ? removedUsers[0] : null
     },
-    updateUser(_, { id, name, email, age }) {
-        const index = users.findIndex(u => u.id === id)
+    updateUser(_, { filter, data }) {
+        const index = userIndex(filter)
         if (index < 0) return null
         const user = {
             ...users[index],
-            name,
-            email,
-            age
+            ...data
         }
         users.splice(index, 1, user)
         return user

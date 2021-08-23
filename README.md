@@ -22,3 +22,20 @@ fragment userComplete on User {
   }
 }
 ```
+
+### Mutation User
+```
+mutation {
+  createUser(
+    name: "Loro", 
+    email: "loro@gmail.com", 
+    age: 30) 
+    {
+      id 
+      name
+      email
+      role { name }
+    }
+}
+
+```

@@ -26,7 +26,16 @@ input UserInput {
     age: Int
 }
 
+input RoleInput {
+    name: String!
+}
+
 input UserFilter {
     id: Int
     email: String
+}
+
+input RoleFilter {
+    id: Int
+    name: String
 }

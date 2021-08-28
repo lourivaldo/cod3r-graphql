@@ -7,4 +7,13 @@ type Mutation {
         filter: UserFilter!
         data: UserInput!
     ): User
+
+    createRole(
+        data: RoleInput!
+    ): Role!
+    removeRole(filter: RoleFilter!): Role
+    updateRole(
+        filter: RoleFilter!
+        data: RoleInput!
+    ): Role
 }

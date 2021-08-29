@@ -1,0 +1,34 @@
+type User {
+    id: Int
+    name: String!
+    email: String!
+    roles: [Role]
+}
+
+input UserInput {
+    name: String
+    email: String
+    password: String
+    roles: [RoleFilter]
+}
+
+input UserFilter {
+    id: Int
+    email: String
+}
+
+type Role {
+    id: Int
+    name: String!
+    label: String!
+}
+
+input RoleInput {
+    name: String
+    label: String
+}
+
+input RoleFilter {
+    id: Int
+    name: String
+}

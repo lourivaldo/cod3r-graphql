@@ -2,9 +2,16 @@ const db = require('../../config/db')
 
 module.exports = {
     async roles() {
-        // implementar
+        return db
+            .select('id', 'name', 'label')
+            .into('roles')
     },
     async role(_, { filter }) {
-        // implementar
+        const where = filter.id ? { id: filter.id } : { name: filter.name }
+        return db
+            .select('id', 'name', 'label')
+            .into('roles')
+            .where(where)
+            .first()
     }
 }

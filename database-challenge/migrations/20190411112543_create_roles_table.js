@@ -2,13 +2,13 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('roles', table => {
       table.increments('id').primary()
-      table.string('nome').notNull().unique()
-      table.string('rotulo').notNull()
+      table.string('name').notNull().unique()
+      table.string('label').notNull()
   }).then(function () {
       return knex('roles').insert([
-          { nome: 'comum', rotulo: 'Comum' },
-          { nome: 'admin', rotulo: 'Administrador' },
-          { nome: 'master', rotulo: 'Master' },
+          { name: 'comum', label: 'Comum' },
+          { name: 'admin', label: 'Administrador' },
+          { name: 'master', label: 'Master' },
       ])
   })
 };

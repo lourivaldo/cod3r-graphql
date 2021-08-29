@@ -21,6 +21,7 @@ type Role {
     id: Int
     name: String!
     label: String!
+    users: [User]
 }
 
 input RoleInput {

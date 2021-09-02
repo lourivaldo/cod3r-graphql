@@ -1,17 +1,37 @@
+const bcrypt = require('bcrypt-nodejs')
 const db = require('../../config/db')
 const { role: getRole } = require('../Query/role')
 const { user: getUser } = require('../Query/user')
 
-module.exports = {
+const mutations = {
+    async registerUser(_, { data }) {
+        return mutations.createUser(_, {
+            data: {
+                name: data.name,
+                email: data.email,
+                password: data.password,
+                roles: null,
+            }
+        })
+    },
     async createUser(_, { data }) {
         try {
             const roleIds = []
-            if (data.roles) {
-                for (const roleFilter of data.roles) {
-                    const role = await getRole(_, { filter: { ...roleFilter }  })
-                    if (role) roleIds.push(role.id)
-                }
+
+            if (!data.roles || !data.roles.length) {
+                data.roles = [{
+                    name: 'comum'
+                }]
             }
+
+            for (const roleFilter of data.roles) {
+                const role = await getRole(_, { filter: { ...roleFilter }  })
+                if (role) roleIds.push(role.id)
+            }
+
+            const salt = bcrypt.genSaltSync()
+            data.password = bcrypt.hashSync(data.password, salt)
+
             const { name, email, password } = data
             const [id] = await db
                 .into('users')
@@ -72,6 +92,11 @@ module.exports = {
                     }
                 }
 
+                if (data.password) {
+                    const salt = bcrypt.genSaltSync()
+                    data.password = bcrypt.hashSync(data.password, salt)
+                }
+
                 delete data.roles
                 await db
                     .into('users')
@@ -86,3 +111,5 @@ module.exports = {
         }
     }
 }
+
+module.exports = mutations

@@ -1,6 +1,9 @@
 type Mutation {
-    # Virgula opcional
     # Mutations de User
+    registerUser(
+        data: UserRegisterInput!
+    ): User!
+
     createUser(
         data: UserInput!
     ): User!

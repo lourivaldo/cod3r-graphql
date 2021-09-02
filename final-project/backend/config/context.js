@@ -35,6 +35,15 @@ module.exports = async ({ req }) => {
         },
         validateAdminUser() {
             if (!admin) throw unauthorizedError
+        },
+        validateUserFilter(filters) {
+            if (admin) return
+            if (!user) throw unauthorizedError
+            if (!filters) throw unauthorizedError
+            const { id, email } = filters
+            if (!id && !email) throw unauthorizedError
+            if (id && id !== user.id) throw unauthorizedError
+            if (email && email !== user.email) throw unauthorizedError
         }
     }
 }

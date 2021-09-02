@@ -14,7 +14,8 @@ const mutations = {
             }
         })
     },
-    async createUser(_, { data }) {
+    async createUser(_, { data }, ctx) {
+        ctx && ctx.validateAdminUser()
         try {
             const roleIds = []
 
@@ -50,7 +51,8 @@ const mutations = {
             throw new Error(err)
         }
     },
-    async removeUser(_, { filter }) {
+    async removeUser(_, { filter }, ctx) {
+        ctx && ctx.validateAdminUser()
         try {
             const user = await getUser(_, { filter })
             if (user) {
@@ -71,7 +73,8 @@ const mutations = {
             throw new Error(err.sqlMessage)
         }
     },
-    async updateUser(_, { filter, data }) {
+    async updateUser(_, { filter, data }, ctx) {
+        ctx && ctx.validateUserFilter(filter)
         try {
             const user = await getUser(_, { filter })
             if (user) {

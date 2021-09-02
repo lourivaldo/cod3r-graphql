@@ -21,6 +21,7 @@ const getUser = async roleName => {
 
 module.exports = async req => {
     const user = await getUser('admin');
+    // const user = await getUser('comum');
     if (user) {
         const { token } = await getLoggedUser(user);
         req.headers = {

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --ext js,graphql"
+    "start": "nodemon --ext js,graphql",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
     "mysql": "^2.16.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "jest": "^27.1.0"
   }
 }

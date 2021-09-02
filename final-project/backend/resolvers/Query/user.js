@@ -20,12 +20,14 @@ module.exports = {
 
         return getLoggedUser(user)
     },
-    async users() {
+    async users(_, __, ctx) {
+        ctx && ctx.validateAdminUser()
         return db
             .select('id', 'name', 'email', 'password')
             .into('users')
     },
-    async user(_, { filter }) {
+    async user(_, { filter }, ctx) {
+        ctx && ctx.validateUserFilter(filter)
         if (!filter) return null
         const where = filter.id ? { id: filter.id } : { email: filter.email }
         return db

@@ -79,7 +79,7 @@ const mutations = {
             const user = await getUser(_, { filter })
             if (user) {
                 const { id } = user
-                if (data.roles) {
+                if (ctx.admin && data.roles) {
                     await db
                         .into('roles_users')
                         .where({ user_id: id })

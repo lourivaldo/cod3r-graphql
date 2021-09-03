@@ -39,7 +39,6 @@
 
 <script>
 import Erros from '../comum/Erros'
-import gql from 'graphql-tag'
 
 export default {
     components: { Erros },
@@ -52,31 +51,7 @@ export default {
     },
     methods: {
         excluirPerfil() {
-            this.$api.mutate({
-                mutation: gql`mutation (
-                    $id: Int
-                    $nome: String
-                ) {
-                    excluirPerfil (
-                        filtro: {
-                            id: $id
-                            nome: $nome
-                        }
-                    ) { 
-                        id nome rotulo
-                    }
-                }`,
-                variables: {
-                    id: this.filtro.id,
-                    nome: this.filtro.nome,
-                },
-            }).then(resultado => {
-                this.dados = resultado.data.excluirPerfil
-                this.filtro = {}
-                this.erros = null
-            }).catch(e => {
-                this.erros = e
-            })
+            // implementar
         }
     }
 }

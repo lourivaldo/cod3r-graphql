@@ -2,8 +2,11 @@
   <v-container fluid>
     <v-layout column>
       <v-flex>
-        <v-btn color="primary" class="ml-0 mb-4"
-               @click="getUsers">
+        <v-btn
+            color="primary"
+            class="ml-0 mb-4"
+            @click="getUsers"
+        >
           Obter Usuários
         </v-btn>
       </v-flex>
@@ -34,19 +37,19 @@
 
 <script>
 import gql from 'graphql-tag'
-import Errors from '../shared/Errors'
+import Errors from '../shared/Errors.vue'
 
 export default {
-  components: {Errors},
+  components: { Errors },
   data() {
     return {
       errors: null,
       users: [],
       headers: [
-        {text: 'ID', value: 'id'},
-        {text: 'Nome', value: 'name'},
-        {text: 'E-mail', value: 'email'},
-        {text: 'Perfis', value: 'roles'},
+        { text: 'ID', value: 'id' },
+        { text: 'Nome', value: 'name' },
+        { text: 'E-mail', value: 'email' },
+        { text: 'Perfis', value: 'roles' },
       ],
     }
   },
@@ -64,12 +67,12 @@ export default {
       }).then((result) => {
         this.users = result.data.users
         this.errors = null
-      }).catch(err => {
+      }).catch((err) => {
         this.users = []
         this.errors = err
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

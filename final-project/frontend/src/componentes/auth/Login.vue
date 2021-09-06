@@ -39,28 +39,28 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 import gql from 'graphql-tag'
-import Errors from '../shared/Errors'
+import Errors from '../shared/Errors.vue'
 
 export default {
-  components: {Errors},
+  components: { Errors },
   data() {
     return {
       user: {
         email: 'admin@mail.com',
         // email: 'comum@mail.com',
-        password: '1234'
+        password: '1234',
       },
       data: null,
-      errors: null
+      errors: null,
     }
   },
   computed: {
     roles() {
-      return this.data && this.data.roles &&
-          this.data.roles.map(p => p.name).join(',')
-    }
+      return this.data && this.data.roles
+          && this.data.roles.map((p) => p.name).join(',')
+    },
   },
   methods: {
     ...mapActions(['setUser']),
@@ -82,7 +82,7 @@ export default {
         variables: {
           email: this.user.email,
           password: this.user.password,
-        }
+        },
       }).then((result) => {
         this.data = result.data.user
         this.user = {}
@@ -91,8 +91,8 @@ export default {
       }).catch((err) => {
         this.errors = err
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

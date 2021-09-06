@@ -28,20 +28,20 @@
 
 <script>
 import gql from 'graphql-tag'
-import Errors from '../shared/Errors'
+import Errors from '../shared/Errors.vue'
 
 export default {
   components: {
-    Errors
+    Errors,
   },
   data() {
     return {
       errors: null,
       roles: [],
       headers: [
-        {text: 'ID', value: 'id'},
-        {text: 'Nome', value: 'name'},
-        {text: 'Rótulo', value: 'label'},
+        { text: 'ID', value: 'id' },
+        { text: 'Nome', value: 'name' },
+        { text: 'Rótulo', value: 'label' },
       ],
     }
   },
@@ -53,16 +53,16 @@ export default {
             roles { id label name }  
           }    
         `,
-        fetchPolicy: "network-only"
-      }).then(result => {
+        fetchPolicy: 'network-only',
+      }).then((result) => {
         this.roles = result.data.roles
         this.errors = null
-      }).catch(err => {
+      }).catch((err) => {
         this.roles = []
         this.errors = err
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

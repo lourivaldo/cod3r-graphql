@@ -38,15 +38,15 @@
 
 <script>
 import gql from 'graphql-tag'
-import Errors from '../shared/Errors'
+import Errors from '../shared/Errors.vue'
 
 export default {
-  components: {Errors},
+  components: { Errors },
   data() {
     return {
       filter: {},
       data: null,
-      errors: null
+      errors: null,
     }
   },
   methods: {
@@ -66,16 +66,16 @@ export default {
         variables: {
           name: this.filter.name,
           label: this.filter.label,
-        }
-      }).then(result => {
+        },
+      }).then((result) => {
         this.data = result.data.role
         this.filter = {}
         this.errors = null
-      }).catch(err => {
+      }).catch((err) => {
         this.errors = err
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

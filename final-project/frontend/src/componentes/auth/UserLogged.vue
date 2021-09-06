@@ -27,17 +27,17 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   computed: {
     ...mapGetters(['user']),
     roles() {
       if (!this.user && !this.user.roles) return null
-      return this.user.roles.map(p => p.label).join(', ')
-    }
+      return this.user.roles.map((p) => p.label).join(', ')
+    },
   },
-  methods: mapActions(['setUser'])
+  methods: mapActions(['setUser']),
 }
 </script>
 

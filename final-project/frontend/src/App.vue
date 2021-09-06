@@ -15,14 +15,14 @@
 
 <script>
 import { mapActions } from 'vuex'
-import AppContent from './componentes/Content'
+import AppContent from './componentes/Content.vue'
 
 export default {
-	name: 'App',
-	components: { AppContent },
-	methods: mapActions(['setUser']),
-	created() {
-		this.setUser(null)
-	}
+  name: 'App',
+  components: { AppContent },
+  methods: mapActions(['setUser']),
+  created() {
+    this.setUser(null)
+  },
 }
 </script>

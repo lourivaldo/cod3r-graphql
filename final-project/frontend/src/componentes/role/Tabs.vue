@@ -46,11 +46,11 @@
 </template>
 
 <script>
-import List from './List'
-import Search from './Search'
-import New from './New'
-import Edit from './Edit'
-import Remove from './Remove'
+import List from './List.vue'
+import Search from './Search.vue'
+import New from './New.vue'
+import Edit from './Edit.vue'
+import Remove from './Remove.vue'
 
 export default {
   components: {
@@ -58,8 +58,8 @@ export default {
     Search,
     New,
     Edit,
-    Remove
-  }
+    Remove,
+  },
 }
 </script>
 

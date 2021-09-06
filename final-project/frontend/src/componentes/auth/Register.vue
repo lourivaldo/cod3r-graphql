@@ -13,7 +13,7 @@
           <v-text-field label="E-mail"
                         v-model="user.email"/>
           <v-text-field label="Senha"
-                        v-model="user.password" 
+                        v-model="user.password"
                         type="password"/>
           <v-btn color="primary" class="ml-0 mt-3"
                  @click="register">
@@ -43,22 +43,22 @@
 
 <script>
 import gql from 'graphql-tag'
-import Errors from '../shared/Errors'
+import Errors from '../shared/Errors.vue'
 
 export default {
-  components: {Errors},
+  components: { Errors },
   data() {
     return {
       user: {},
       data: null,
-      errors: null
+      errors: null,
     }
   },
   computed: {
     roles() {
-      return this.data && this.data.roles &&
-          this.data.roles.map(p => p.name).join(',')
-    }
+      return this.data && this.data.roles
+          && this.data.roles.map((p) => p.name).join(',')
+    },
   },
   methods: {
     register() {
@@ -78,16 +78,16 @@ export default {
             }
           }
         `,
-        variables: this.user
+        variables: this.user,
       }).then((result) => {
-        this.data = result.data.user;
+        this.data = result.data.user
         this.user = {}
         this.errors = null
       }).catch((err) => {
         this.errors = err
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

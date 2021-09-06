@@ -20,7 +20,7 @@
                     :items="roles"
                     item-value="id"
                     item-text="label"
-                    attach 
+                    attach
                     multiple
                     chips
                     deletable-chips/>
@@ -56,32 +56,31 @@
 
 <script>
 import gql from 'graphql-tag'
-import Errors from '../shared/Errors'
+import Errors from '../shared/Errors.vue'
 
 export default {
   components: {
-    Errors
+    Errors,
   },
   data() {
     return {
       user: {},
       roles: [],
       data: null,
-      errors: null
+      errors: null,
     }
   },
   computed: {
     rolesLabels() {
-      return this.data && this.data.roles &&
-          this.data.roles.map(p => p.label).join(', ')
+      return this.data && this.data.roles
+          && this.data.roles.map((p) => p.label).join(', ')
     },
     selectedRoles() {
       if (this.user.roles) {
-        return this.user.roles.map(id => ({id}))
-      } else {
-        return null
+        return this.user.roles.map((id) => ({ id }))
       }
-    }
+      return null
+    },
   },
   methods: {
     newUser() {
@@ -113,7 +112,7 @@ export default {
         this.data = result.data.user
         this.user = {}
         this.errors = null
-      }).catch(err => {
+      }).catch((err) => {
         console.log(err)
         this.data = null
         this.errors = err
@@ -121,15 +120,15 @@ export default {
     },
     getRoles() {
       this.$api.query({
-        query: gql`{ roles { id label } }`
+        query: gql`{ roles { id label } }`,
       }).then((result) => {
         this.roles = result.data.roles
         this.errors = null
       }).catch((error) => {
         this.errors = error
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

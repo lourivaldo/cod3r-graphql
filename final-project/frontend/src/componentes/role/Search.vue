@@ -38,25 +38,25 @@
 
 <script>
 import gql from 'graphql-tag'
-import Errors from '../shared/Errors'
+import Errors from '../shared/Errors.vue'
 
 export default {
   components: {
-    Errors
+    Errors,
   },
   data() {
     return {
       filter: {},
       roles: [],
       data: null,
-      errors: null
+      errors: null,
     }
   },
   computed: {
     rolesLabels() {
-      return this.data && this.data.roles &&
-          this.data.roles.map(p => p.label).join(', ')
-    }
+      return this.data && this.data.roles
+          && this.data.roles.map((p) => p.label).join(', ')
+    },
   },
   methods: {
     search() {
@@ -75,16 +75,16 @@ export default {
         variables: {
           id: this.filter.id,
           name: this.filter.name,
-        }
-      }).then(result => {
+        },
+      }).then((result) => {
         this.data = result.data.role
         this.filter = {}
         this.errors = null
-      }).catch(err => {
+      }).catch((err) => {
         this.errors = err
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

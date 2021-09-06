@@ -46,18 +46,18 @@
 
 <script>
 import gql from 'graphql-tag'
-import Errors from '../shared/Errors'
+import Errors from '../shared/Errors.vue'
 
 export default {
   components: {
-    Errors
+    Errors,
   },
   data() {
     return {
       filter: {},
       role: {},
       data: null,
-      errors: null
+      errors: null,
     }
   },
   methods: {
@@ -87,16 +87,16 @@ export default {
           nameFilter: this.filter.name,
           name: this.role.name,
           label: this.role.label,
-        }
-      }).then(result => {
+        },
+      }).then((result) => {
         this.data = result.data.role
         this.filter = {}
         this.errors = null
-      }).catch(err => {
+      }).catch((err) => {
         this.errors = err
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

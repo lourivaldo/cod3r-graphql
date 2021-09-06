@@ -3,31 +3,18 @@
         <v-layout>
             <v-flex>
                 <v-layout column class="ma-3">
-                    <h1 class="headline">Novo Usuário</h1>
+                    <h1 class="headline">Consultar Usuário</h1>
                     <v-divider class="mb-3" />
                         <div v-if="erros">
                             <Erros :erros="erros" />
                         </div>
-                        <v-text-field label="Nome"
-                            v-model="usuario.nome" />
+                        <v-text-field label="ID"
+                            v-model.number="filtro.id" />
                         <v-text-field label="E-mail"
-                            v-model="usuario.email" />
-                        <v-text-field label="Senha"
-                            v-model="usuario.senha" type="password" />
-                        <v-select label="Perfis"
-                            v-model="usuario.perfis"
-                            :items="perfis"
-                            item-value="id"
-                            item-text="rotulo"
-                            attach multiple
-                            chips deletable-chips />
-                        <v-btn class="ml-0 mt-3"
-                            @click="obterPerfis">
-                            Obter Perfis
-                        </v-btn>
+                            v-model="filtro.email" />
                         <v-btn color="primary" class="ml-0 mt-3"
-                            @click="novoUsuario">
-                            Novo Usuário
+                            @click="search">
+                            Consultar
                         </v-btn>
                 </v-layout>
             </v-flex>
@@ -40,10 +27,10 @@
                             v-model="dados.id" />
                         <v-text-field label="Nome" readonly
                             v-model="dados.nome" />
-                        <v-text-field label="Email" readonly
+                        <v-text-field label="E-mail" readonly
                             v-model="dados.email" />
                         <v-text-field label="Perfis" readonly
-                            :value="perfisRotulos" />
+                            :value="roleLabels" />
                     </template>
                 </v-layout>
             </v-flex>
@@ -52,36 +39,26 @@
 </template>
 
 <script>
-import Erros from '../comum/Erros'
+import Erros from '../shared/Erros'
 
 export default {
     components: { Erros },
     data() {
         return {
-            usuario: {},
+            filtro: {},
             perfis: [],
             dados: null,
             erros: null
         }
     },
     computed: {
-        perfisRotulos() {
+        roleLabels() {
             return this.dados && this.dados.perfis &&
                 this.dados.perfis.map(p => p.rotulo).join(', ')
-        },
-        perfisSelecionados() {
-            if(this.usuario.perfis) {
-                return this.usuario.perfis.map(id => ({ id }))
-            } else {
-                return null
-            }
         }
     },
     methods: {
-        novoUsuario() {
-            // implementar
-        },
-        obterPerfis() {
+        search() {
             // implementar
         }
     }

@@ -3,19 +3,27 @@
         <v-layout>
             <v-flex>
                 <v-layout column class="ma-3">
-                    <h1 class="headline">Consultar Perfis</h1>
+                    <h1 class="headline">Filtrar Perfil</h1>
                     <v-divider class="mb-3" />
-                        <div v-if="erros">
-                            <Erros :erros="erros" />
-                        </div>
-                        <v-text-field label="ID"
-                            v-model.number="perfil.id" />
-                        <v-text-field label="Nome"
-                            v-model="perfil.nome" />
-                        <v-btn color="primary" class="ml-0 mt-3"
-                            @click="consultar">
-                            Consultar
-                        </v-btn>
+                    <div v-if="erros">
+                        <Erros :erros="erros" />
+                    </div>
+                    <v-text-field label="ID"
+                        v-model.number="filtro.id" />
+                    <v-text-field label="Nome"
+                        v-model="filtro.nome" />
+
+                    <h1 class="mt-4 headline">Alterar Perfil</h1>
+                    <v-divider class="mb-3" />
+                    <v-text-field label="Nome"
+                        v-model="perfil.nome" />
+                    <v-text-field label="Rótulo"
+                        v-model="perfil.rotulo" />
+
+                    <v-btn color="primary" class="ml-0 mt-3"
+                        @click="alterarPerfil">
+                        Alterar Perfil
+                    </v-btn>
                 </v-layout>
             </v-flex>
             <v-flex>
@@ -37,26 +45,20 @@
 </template>
 
 <script>
-import Erros from '../comum/Erros'
+import Erros from '../shared/Erros'
 
 export default {
     components: { Erros },
     data() {
         return {
+            filtro: {},
             perfil: {},
-            perfis: [],
             dados: null,
             erros: null
         }
     },
-    computed: {
-        perfisRotulos() {
-            return this.dados && this.dados.perfis &&
-                this.dados.perfis.map(p => p.rotulo).join(', ')
-        }
-    },
     methods: {
-        consultar() {
+        alterarPerfil() {
             // implementar
         }
     }

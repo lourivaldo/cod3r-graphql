@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import Erros from '../comum/Erros'
+import Erros from '../shared/Erros'
 
 export default {
     components: { Erros },

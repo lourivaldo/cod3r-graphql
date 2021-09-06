@@ -39,10 +39,10 @@
 </template>
 
 <script>
-import AutenticacaoAbas from './autenticacao/Abas'
-import UsuarioLogado from './autenticacao/UsuarioLogado'
-import UsuarioAbas from './usuario/Abas'
-import PerfilAbas from './perfil/Abas'
+import AutenticacaoAbas from './auth/Abas'
+import UsuarioLogado from './auth/UsuarioLogado'
+import UsuarioAbas from './user/Abas'
+import PerfilAbas from './role/Abas'
 
 export default {
 	components: {

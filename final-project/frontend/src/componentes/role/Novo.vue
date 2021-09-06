@@ -3,20 +3,18 @@
         <v-layout>
             <v-flex>
                 <v-layout column class="ma-3">
-                    <h1 class="headline">Registrar</h1>
+                    <h1 class="headline">Novo Perfil</h1>
                     <v-divider class="mb-3" />
                         <div v-if="erros">
                             <Erros :erros="erros" />
                         </div>
                         <v-text-field label="Nome"
-                            v-model="usuario.nome" />
-                        <v-text-field label="E-mail"
-                            v-model="usuario.email" />
-                        <v-text-field label="Senha"
-                            v-model="usuario.senha" type="password" />
+                            v-model="perfil.nome" />
+                        <v-text-field label="Rótulo"
+                            v-model="perfil.rotulo" />
                         <v-btn color="primary" class="ml-0 mt-3"
-                            @click="registrar">
-                            Registrar
+                            @click="novoPerfil">
+                            Novo Perfil
                         </v-btn>
                 </v-layout>
             </v-flex>
@@ -29,10 +27,8 @@
                             v-model="dados.id" />
                         <v-text-field label="Nome" readonly
                             v-model="dados.nome" />
-                        <v-text-field label="E-mail" readonly
-                            v-model="dados.email" />
-                        <v-text-field label="Perfis" readonly
-                            :value="perfis" />
+                        <v-text-field label="Rótulo" readonly
+                            v-model="dados.rotulo" />
                     </template>
                 </v-layout>
             </v-flex>
@@ -41,25 +37,19 @@
 </template>
 
 <script>
-import Erros from '../comum/Erros'
+import Erros from '../shared/Erros'
 
 export default {
     components: { Erros },
     data() {
         return {
-            usuario: {},
+            perfil: {},
             dados: null,
             erros: null
         }
     },
-    computed: {
-        perfis() {
-            return this.dados && this.dados.perfis &&
-                this.dados.perfis.map(p => p.nome).join(',')
-        }
-    },
     methods: {
-        registrar() {
+        novoPerfil() {
             // implementar
         }
     }

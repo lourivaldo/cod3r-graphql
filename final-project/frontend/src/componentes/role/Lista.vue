@@ -3,8 +3,8 @@
         <v-layout column>
             <v-flex>
                 <v-btn color="primary" class="ml-0 mb-4"
-                    @click="obterUsuarios">
-                    Obter Usuários
+                    @click="obterPerfis">
+                    Obter Perfis
                 </v-btn>
             </v-flex>
             <v-flex>
@@ -13,15 +13,12 @@
                 </div>
             </v-flex>
             <v-flex>
-                <v-data-table :headers="headers" :items="usuarios" 
+                <v-data-table :headers="headers" :items="perfis" 
                     hide-actions class="elevation-1">
                     <template slot="items" slot-scope="props">
                         <td>{{ props.item.id }}</td>
                         <td>{{ props.item.nome }}</td>
-                        <td>{{ props.item.email }}</td>
-                        <td>{{ props.item.perfis
-                                .map(p => p.nome)
-                                .join(', ') }}</td>
+                        <td>{{ props.item.rotulo }}</td>
                     </template>
                 </v-data-table>
             </v-flex>
@@ -30,25 +27,24 @@
 </template>
 
 <script>
-import Erros from '../comum/Erros'
+import Erros from '../shared/Erros'
 
 export default {
     components: { Erros },
     data() {
         return {
             erros: null,
-            usuarios: [],
+            perfis: [],
             headers: [
                 { text: 'ID', value: 'id' },
                 { text: 'Nome', value: 'name' },
-                { text: 'E-mail', value: 'email' },
-                { text: 'Perfis', value: 'perfis' },
+                { text: 'Rótulo', value: 'rotulo' },
             ],
         }
     },
     methods: {
-        obterUsuarios() {
-            // 
+        obterPerfis() {
+            // implementar
         }
     }
 }

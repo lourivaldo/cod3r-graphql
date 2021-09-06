@@ -23,37 +23,37 @@
             </v-tab>
 
             <v-tab-item>
-                <Lista />
+                <List />
             </v-tab-item>
 
             <v-tab-item>
-                <Consulta />
+                <Search />
             </v-tab-item>
 
             <v-tab-item>
-                <Novo />
+                <New />
             </v-tab-item>
             
             <v-tab-item>
-                <Alterar />
+                <Edit />
             </v-tab-item>
             
             <v-tab-item>
-                <Excluir />
+                <Remove />
             </v-tab-item>
         </v-tabs>
     </v-container>
 </template>
 
 <script>
-import Lista from './Lista'
-import Consulta from './Consulta'
-import Novo from './Novo'
-import Alterar from './Alterar'
-import Excluir from './Excluir'
+import List from './List'
+import Search from './Search'
+import New from './New'
+import Edit from './Edit'
+import Remove from './Remove'
 
 export default {
-    components: { Lista, Consulta, Novo, Alterar, Excluir }
+    components: { List, Search, New, Edit, Remove }
 }
 </script>
 

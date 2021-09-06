@@ -85,7 +85,6 @@ export default {
   },
   methods: {
     newUser() {
-      console.log('-----------')
       this.$api.mutate({
         mutation: gql`
           mutation Mutation(

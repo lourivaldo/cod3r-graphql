@@ -20,7 +20,7 @@
           <v-text-field label="E-mail"
                         v-model="user.email"/>
           <v-text-field label="Senha"
-                        v-model="user.senha" type="password"/>
+                        v-model="user.password" type="password"/>
           <v-select label="Perfis"
                     v-model="user.roles"
                     :items="roles"
@@ -63,7 +63,9 @@ import gql from 'graphql-tag'
 import Errors from '../shared/Erros'
 
 export default {
-  components: {Errors},
+  components: {
+    Errors
+  },
   data() {
     return {
       filter: {},
@@ -89,7 +91,48 @@ export default {
   },
   methods: {
     updateUser() {
-      // Implementar
+      this.$api.mutate({
+        mutation: gql`
+          mutation Mutation(
+            $idFilter: Int
+            $emailFilter: String
+            $name: String
+            $email: String
+            $password: String
+            $roles: [RoleFilter]
+          ) {
+              user: updateUser(
+                filter: {
+                   id: $idFilter
+                   email: $emailFilter                
+                } 
+                data: {
+                    name: $name
+                    email: $email
+                    password: $password
+                    roles: $roles
+                }) {
+                id name email roles { label }
+              }
+          }
+        `,
+        variables: {
+          idFilter: this.filter.id,
+          emailFilter: this.filter.email,
+          name: this.user.name,
+          email: this.user.email,
+          password: this.user.password,
+          roles: this.selectedRoles,
+        }
+      }).then((result) => {
+        this.data = result.data.user
+        this.filter = {}
+        this.user = {}
+        this.errors = null
+      }).catch(err => {
+        this.data = null
+        this.errors = err
+      })
     },
     getRoles() {
       this.$api.query({

@@ -20,9 +20,9 @@ import Conteudo from './componentes/Conteudo'
 export default {
 	name: 'App',
 	components: { Conteudo },
-	methods: mapActions(['setUsuario']),
+	methods: mapActions(['setUser']),
 	created() {
-		this.setUsuario(null)
+		this.setUser(null)
 	}
 }
 </script>

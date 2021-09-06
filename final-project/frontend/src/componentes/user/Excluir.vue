@@ -14,7 +14,7 @@
                         v-model="filtro.email" />
 
                     <v-btn color="error" class="ml-0 mt-3"
-                        @click="excluirUsuario">
+                        @click="excluirUser">
                         Excluir Usuário
                     </v-btn>
                 </v-layout>
@@ -50,7 +50,7 @@ export default {
         }
     },
     methods: {
-        excluirUsuario() {
+        excluirUser() {
             // implementar
         }
     }

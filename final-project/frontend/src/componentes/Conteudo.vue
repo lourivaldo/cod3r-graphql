@@ -1,7 +1,7 @@
 <template>
 	<v-layout column>
 		<v-flex>
-			<UsuarioLogado />
+			<UserLogged />
 		</v-flex>
 		<v-flex>
 			<v-tabs centered  dark icons-and-text>
@@ -23,15 +23,15 @@
 				</v-tab>
 
 				<v-tab-item>
-					<AutenticacaoAbas />
+					<AuthTabs />
 				</v-tab-item>
 
 				<v-tab-item>
-					<UsuarioAbas />
+					<UserTabs />
 				</v-tab-item>
 
 				<v-tab-item>
-					<PerfilAbas />
+					<RoleTabs />
 				</v-tab-item>
 			</v-tabs>
 		</v-flex>
@@ -39,17 +39,17 @@
 </template>
 
 <script>
-import AutenticacaoAbas from './auth/Abas'
-import UsuarioLogado from './auth/UsuarioLogado'
-import UsuarioAbas from './user/Abas'
-import PerfilAbas from './role/Abas'
+import AuthTabs from './auth/Tabs'
+import UserLogged from './auth/UserLogged'
+import UserTabs from './user/Tabs'
+import RoleTabs from './role/Tabs'
 
 export default {
 	components: {
-		AutenticacaoAbas,
-		UsuarioLogado,
-		UsuarioAbas,
-		PerfilAbas,
+		AuthTabs,
+    UserLogged,
+		UserTabs,
+		RoleTabs,
 	},
 }
 </script>

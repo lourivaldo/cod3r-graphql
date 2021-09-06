@@ -44,15 +44,15 @@ export default {
     data() {
         return {
             perfil: {},
-            perfis: [],
+            roles: [],
             dados: null,
             erros: null
         }
     },
     computed: {
-        perfisRotulos() {
-            return this.dados && this.dados.perfis &&
-                this.dados.perfis.map(p => p.rotulo).join(', ')
+        rolesRotulos() {
+            return this.dados && this.dados.roles &&
+                this.dados.roles.map(p => p.rotulo).join(', ')
         }
     },
     methods: {

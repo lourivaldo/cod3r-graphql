@@ -22,8 +22,12 @@
 <script>
 import Register from './Register'
 import Login from './Login'
+
 export default {
-    components: { Register, Login }
+    components: { 
+      Register, 
+      Login 
+    }
 }
 </script>
 

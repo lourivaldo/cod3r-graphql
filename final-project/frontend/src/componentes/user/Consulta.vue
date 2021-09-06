@@ -46,15 +46,15 @@ export default {
     data() {
         return {
             filtro: {},
-            perfis: [],
+            roles: [],
             dados: null,
             erros: null
         }
     },
     computed: {
         roleLabels() {
-            return this.dados && this.dados.perfis &&
-                this.dados.perfis.map(p => p.rotulo).join(', ')
+            return this.dados && this.dados.roles &&
+                this.dados.roles.map(p => p.rotulo).join(', ')
         }
     },
     methods: {

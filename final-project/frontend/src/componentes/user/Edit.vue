@@ -6,7 +6,7 @@
           <h1 class="headline">Filtrar Usuário</h1>
           <v-divider class="mb-3"/>
           <div v-if="errors">
-            <Errors :erros="errors"/>
+            <Errors :errors="errors"/>
           </div>
           <v-text-field label="ID"
                         v-model.number="filter.id"/>
@@ -60,7 +60,7 @@
 
 <script>
 import gql from 'graphql-tag'
-import Errors from '../shared/Erros'
+import Errors from '../shared/Errors'
 
 export default {
   components: {

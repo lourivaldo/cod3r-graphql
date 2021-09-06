@@ -28,7 +28,7 @@
 
 <script>
 import gql from 'graphql-tag'
-import Errors from '../shared/Erros'
+import Errors from '../shared/Errors'
 
 export default {
   components: {
@@ -52,10 +52,13 @@ export default {
           query {
             roles { id label name }  
           }    
-        `   
+        `,
+        fetchPolicy: "network-only"
       }).then(result => {
         this.roles = result.data.roles
+        this.errors = null
       }).catch(err => {
+        this.roles = []
         this.errors = err
       })
     }

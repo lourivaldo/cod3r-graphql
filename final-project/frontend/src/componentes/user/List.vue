@@ -9,7 +9,7 @@
       </v-flex>
       <v-flex>
         <div v-if="errors" class="mb-4">
-          <Errors :erros="errors"/>
+          <Errors :errors="errors"/>
         </div>
       </v-flex>
       <v-flex>
@@ -34,7 +34,7 @@
 
 <script>
 import gql from 'graphql-tag'
-import Errors from '../shared/Erros'
+import Errors from '../shared/Errors'
 
 export default {
   components: {Errors},

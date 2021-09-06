@@ -6,7 +6,7 @@
           <h1 class="headline">Novo Usuário</h1>
           <v-divider class="mb-3"/>
           <div v-if="errors">
-            <Errors :erros="errors"/>
+            <Errors :errors="errors"/>
           </div>
           <v-text-field label="Nome"
                         v-model="user.name"/>
@@ -56,7 +56,7 @@
 
 <script>
 import gql from 'graphql-tag'
-import Errors from '../shared/Erros'
+import Errors from '../shared/Errors'
 
 export default {
   components: {

@@ -6,12 +6,12 @@
           <h1 class="headline">Consultar Perfis</h1>
           <v-divider class="mb-3"/>
           <div v-if="errors">
-            <Errors :erros="errors"/>
+            <Errors :errors="errors"/>
           </div>
           <v-text-field label="ID"
-                        v-model.number="role.id"/>
+                        v-model.number="filter.id"/>
           <v-text-field label="Nome"
-                        v-model="role.name"/>
+                        v-model="filter.name"/>
           <v-btn color="primary" class="ml-0 mt-3"
                  @click="search">
             Consultar
@@ -37,7 +37,8 @@
 </template>
 
 <script>
-import Errors from '../shared/Erros'
+import gql from 'graphql-tag'
+import Errors from '../shared/Errors'
 
 export default {
   components: {
@@ -45,7 +46,7 @@ export default {
   },
   data() {
     return {
-      role: {},
+      filter: {},
       roles: [],
       data: null,
       errors: null
@@ -59,7 +60,29 @@ export default {
   },
   methods: {
     search() {
-      
+      this.$api.query({
+        query: gql`
+          query Query(
+            $id: Int
+            $name: String
+          ) {
+            role(filter: {
+              id: $id 
+              name: $name
+            }) { id label name }
+          }
+        `,
+        variables: {
+          id: this.filter.id,
+          name: this.filter.name,
+        }
+      }).then(result => {
+        this.data = result.data.role
+        this.filter = {}
+        this.errors = null
+      }).catch(err => {
+        this.errors = err
+      })
     }
   }
 }

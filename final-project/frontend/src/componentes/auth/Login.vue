@@ -6,7 +6,7 @@
           <h1 class="headline">Login</h1>
           <v-divider class="mb-3"/>
           <div v-if="errors">
-            <Errors :erros="errors"/>
+            <Errors :errors="errors"/>
           </div>
           <v-text-field label="E-mail"
                         v-model="user.email"/>
@@ -41,7 +41,7 @@
 <script>
 import {mapActions} from 'vuex'
 import gql from 'graphql-tag'
-import Errors from '../shared/Erros'
+import Errors from '../shared/Errors'
 
 export default {
   components: {Errors},

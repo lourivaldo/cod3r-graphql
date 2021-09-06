@@ -8,18 +8,18 @@
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-content>
-      <Conteudo />
+      <AppContent />
     </v-content>
   </v-app>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
-import Conteudo from './componentes/Conteudo'
+import AppContent from './componentes/Content'
 
 export default {
 	name: 'App',
-	components: { Conteudo },
+	components: { AppContent },
 	methods: mapActions(['setUser']),
 	created() {
 		this.setUser(null)
